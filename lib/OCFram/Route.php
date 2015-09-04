@@ -11,9 +11,9 @@ class Route {
 
     public function  __construct($url, $module, $action, array $varsNames){
         $this->setAction($action);
-        $this->module = $module;
-        $this->url = $url;
-        $this->varsNames = $varsNames;
+        $this->setModule($module);
+        $this->setUrl($url);
+        $this->setVarsNames($varsNames);
     }
 
     public function hasVars(){
