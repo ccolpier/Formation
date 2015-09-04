@@ -7,6 +7,7 @@ class BackController extends ApplicationComponent{
     protected $module = '';
     protected $page = NULL;
     protected $view = '';
+    protected $managers = NULL;
 
     public function __construct(Application $app, $module, $action){
         parent::__construct($app);
@@ -15,6 +16,7 @@ class BackController extends ApplicationComponent{
         $this->setAction($action);
         $this->page = new Page($app);
         $this->setView($action);
+        $this->managers = new Managers('PDO', PDOFactory::getSQLServerConnection());
     }
 
     public function execute(){
