@@ -15,6 +15,7 @@ class Page extends ApplicationComponent{
     public function getGeneratedPage(){
         if (file_exists($this->contentFile))
         {
+            $user -> $this->app->user();
             extract($this->vars);
 
             ob_start();
