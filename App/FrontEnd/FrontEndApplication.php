@@ -1,6 +1,6 @@
 <?php
 
-namespace \App\FrontEnd;
+namespace App\FrontEnd;
 
 class FrontEndApplication extends \OCFram\Application {
     public function __construct(){
