@@ -43,8 +43,9 @@ class BackController extends ApplicationComponent{
     }
 
     public function setView($view){
-        if(is_string(($action))){
-            $this->action = $action;
+        if(is_string(($view))){
+            $this->view = $view;
+            $this->page->setContentFile(__DIR__.'/../../App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->view.'.php');
         }
     }
 }
