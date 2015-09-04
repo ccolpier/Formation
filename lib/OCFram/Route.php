@@ -21,7 +21,7 @@ class Route {
     }
 
     public function match($url){
-        return preg_match('^'.$this->url.'$', $url);
+        return preg_match('`^'.$this->url.'$`', $url);
     }
 
     public function setAction($action){

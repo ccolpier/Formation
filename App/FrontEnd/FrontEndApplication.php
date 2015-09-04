@@ -5,6 +5,7 @@ namespace App\FrontEnd;
 class FrontEndApplication extends \OCFram\Application {
     public function __construct(){
         parent::__construct();
+        $this->name = 'FrontEnd';
     }
 
     public function run(){
