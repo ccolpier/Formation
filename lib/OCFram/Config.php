@@ -7,10 +7,13 @@ class Config extends ApplicationComponent{
 
     public function get($var){
         if(!empty($var)){
-            
+            $xml = new \DOMDocument;
+            $xml->load(__DIR__.'/../../App/'.$this->name.'/Config/app.xml');
+            $configs = $xml->getElementsByTagName('define');
+            foreach($configs as $config){
+                $this->var[$config.getAttribute('var')] = $config.getAttribute('value');
+            }
         }
-        else {
-
-        }
+        return isset($this->vars[$var]) ? $this->vars[$var] : NULL;
     }
 }
