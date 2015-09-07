@@ -4,10 +4,9 @@ namespace OCFram;
 
 class PDOFactory{
     public static function getSQLServerConnection(){
-        $db = new \PDO('mssql:host=ACTARUS-ASP-SQL\MSSQLSERVER2012),1433;dbname=bd_madnetix', 'usr_madnetix', 'pass_madnetix');
-        $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(\PDO::ATTR_PERSISTENT , true);
-        $db->setAttribute(\PDO::ATTR_CURSOR , \PDO::CURSOR_SCROLL);
+        $server_name = 'ACTARUS-ASP-SQL\JOON, 1443';
+        $connection_infos = array( "Database"=>"madnetix_zero", "UID"=>"sa", "PWD"=>"sa");
+        $db = sqlsrv_connect($server_name, $connection_infos);
         return $db;
     }
 }
