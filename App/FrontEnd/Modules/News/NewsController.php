@@ -25,7 +25,7 @@ class NewsController extends \OCFram\BackController {
         $this->page->addVar('listeNews', $listeNews);
     }
 
-
+    // Solution
     public function executeShow(\OCFram\HTTPRequest $request){
         $news = $this->managers->getManagerOf('News')->getUnique($request->getData('id'));
 
