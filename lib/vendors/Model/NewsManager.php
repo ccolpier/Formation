@@ -1,6 +1,7 @@
 <?php
 namespace Model;
 
+use \Entity\News;
 
 abstract class NewsManager extends \OCFram\Manager
 {

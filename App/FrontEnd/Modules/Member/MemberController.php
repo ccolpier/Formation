@@ -1,7 +1,30 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ccolpier
- * Date: 07/09/2015
- * Time: 17:28
- */
+
+namespace App\FrontEnd\Modules\Member;
+use \OCFram\HTTPRequest;
+
+class MemberController extends \OCFram\BackController{
+    public function executeIndex(HTTPRequest $request){
+
+    }
+
+    public function executeRegister(HTTPRequest $request){
+
+    }
+
+    public function executeConnect(HTTPRequest $request){
+
+    }
+
+    public function executeRestore(HTTPRequest $request){
+
+    }
+
+    public function executeUpdate(HTTPRequest $request){
+
+    }
+
+    public function executeSearch(HTTPRequest $request){
+
+    }
+}

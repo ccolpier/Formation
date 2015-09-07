@@ -2,11 +2,13 @@
 
 namespace Model;
 
+use Entity\News;
+
 class NewsManagerPDO extends NewsManager{
     protected function add(News $news)
     {
-        $requete = $this->dao->prepare('INSERT INTO news VALUES auteur = :auteur, titre = :titre, contenu = :contenu, dateAjout = GETUTCDATE(), dateModif = GETUTCDATE()');
-
+        $query = 'INSERT INTO news (auteur, titre, contenu, dateAjout, dateModif) VALUES (:auteur, :titre, :contenu, GETUTCDATE(), GETUTCDATE())';
+        $requete = $this->dao->prepare($query);
         $requete->bindValue(':titre', $news->titre());
         $requete->bindValue(':auteur', $news->auteur());
         $requete->bindValue(':contenu', $news->contenu());
@@ -38,8 +40,8 @@ class NewsManagerPDO extends NewsManager{
         // Solution. Le but est d'utiliser le type DateTime de PHP pour la gestion de dates
         foreach ($listeNews as $news)
         {
-            $news->setDateAjout(new \DateTime($news->dateAjout()));
-            $news->setDateModif(new \DateTime($news->dateModif()));
+            $news->setDateAjout(new \DateTime($news->dateAjout(), new \DateTimeZone("UTC")));
+            $news->setDateModif(new \DateTime($news->dateModif(), new \DateTimeZone("UTC")));
         }
 
         return $listeNews;
@@ -47,15 +49,16 @@ class NewsManagerPDO extends NewsManager{
 
     public function getUnique($id)
     {
-        $query = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id = '.$id;
+        echo $id;
+        $query = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id = '.(int)$id;
         $requete = $this->dao->query($query);
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\News');
 
         //Solution
         if ($news = $requete->fetch())
         {
-            $news->setDateAjout(new \DateTime($news->dateAjout()));
-            $news->setDateModif(new \DateTime($news->dateModif()));
+            $news->setDateAjout(new \DateTime($news->dateAjout(), new \DateTimeZone("UTC")));
+            $news->setDateModif(new \DateTime($news->dateModif(), new \DateTimeZone("UTC")));
         }
 
         return $news;

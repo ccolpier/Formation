@@ -3,7 +3,8 @@ namespace Entity;
 
 
 class News extends \OCFram\Entity {
-    protected $auteur,
+    protected $id,
+        $auteur,
         $titre,
         $contenu,
         $dateAjout,
@@ -56,6 +57,10 @@ class News extends \OCFram\Entity {
     public function setDateModif(\DateTime $dateModif)
     {
         $this->dateModif = $dateModif;
+    }
+
+    public function id(){
+        return $this->id;
     }
 
     public function auteur()
