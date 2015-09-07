@@ -1,5 +1,5 @@
 <?php
-namespace Models;
+namespace Model;
 
 
 abstract class NewsManager extends \OCFram\Manager

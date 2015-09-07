@@ -1,10 +1,10 @@
 <?php
 
-namespace Models;
+namespace Model;
 
 class NewsManagerPDO extends NewsManager{
     public function getList($debut = -1, $limite = -1){
-        $query = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id BETWEEN '.$début.' AND '.$limite;
+        $query = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id BETWEEN '.$debut.' AND '.$limite;
 
         // Solution. Deuxième ligne nécessaire pour bind les résultats de la requête dans un type d'objets PHP
         $requete = $this->dao->query($query);

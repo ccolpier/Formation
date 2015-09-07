@@ -22,7 +22,7 @@ class BackController extends ApplicationComponent{
     public function execute(){
         $to_execute = 'execute'.ucfirst(strtolower($this->action));
         if(is_callable([$this, $to_execute])){
-            $this->$to_execute;
+            $this->$to_execute($this->app()->HTTPRequest());
         }
     }
 
