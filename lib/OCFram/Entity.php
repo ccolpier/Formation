@@ -5,7 +5,9 @@ namespace OCFram;
 class Entity implements  \ArrayAccess{
     protected $id;
 
-    public function __construct($valeurs){
+    use Hydrator;
+
+    public function __construct(array $valeurs = array()){
         $this->hydrate($valeurs);
     }
 
@@ -21,18 +23,6 @@ class Entity implements  \ArrayAccess{
 
     public function isNew(){
         return is_null($this->id);
-    }
-
-    public function hydrate(array $valeurs){
-        foreach ($valeurs as $champ => $valeur)
-        {
-            $to_execute = 'set'.ucfirst($champ);
-
-            if (is_callable([$this, $to_execute]))
-            {
-                $this->$to_execute($valeur);
-            }
-        }
     }
 
     public function offsetGet($var)

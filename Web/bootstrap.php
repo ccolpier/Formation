@@ -20,7 +20,17 @@ $modelLoader->register();
 $entityLoader = new SplClassLoader('Entity', __DIR__.'/../lib/vendors');
 $entityLoader->register();
 
-// Il ne nous suffit plus qu'à déduire le nom de la classe et à l'instancier
+$fieldLoader = new SplClassLoader('Field', __DIR__.'/../lib/vendors');
+$fieldLoader->register();
+
+$validatorLoader = new SplClassLoader('Validator', __DIR__.'/../lib/vendors');
+$validatorLoader->register();
+
+$formBuilderLoader = new SplClassLoader('FormBuilder', __DIR__.'/../lib/vendors');
+$formBuilderLoader->register();
+
+
+// Il ne nous suffit plus qu'à déduire le nom de la classe et de l'instancier
 $appClass = 'App\\'.$_GET['app'].'\\'.$_GET['app'].'Application';
 
 $app = new $appClass;
