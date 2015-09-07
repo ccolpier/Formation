@@ -20,8 +20,16 @@ class Route {
         return !empty($varsNames);
     }
 
-    public function match($url){
-        return preg_match('`^'.$this->url.'$`', $url);
+    public function match($url)
+    {
+        if (preg_match('`^'.$this->url.'$`', $url, $matches))
+        {
+            return $matches;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function setAction($action){

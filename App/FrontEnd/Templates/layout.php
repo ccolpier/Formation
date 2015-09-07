@@ -13,16 +13,16 @@
 <body>
 <div id="wrap">
     <header>
-        <h1><a href="/">Mon super site</a></h1>
+        <h1><a href="/formation/">Mon super site</a></h1>
         <p>Comment ça, il n'y a presque rien ?</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="/">Accueil</a></li>
+            <li><a href="/formation/">Accueil</a></li>
             <?php if ($user->isAuthenticated()) { ?>
-                <li><a href="/admin/">Admin</a></li>
-                <li><a href="/admin/news-insert.html">Ajouter une news</a></li>
+                <li><a href="/formation/admin/">Admin</a></li>
+                <li><a href="/formation/admin/news-insert.html">Ajouter une news</a></li>
             <?php } ?>
         </ul>
     </nav>

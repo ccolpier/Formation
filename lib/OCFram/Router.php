@@ -13,13 +13,13 @@ class Router{
             $this->routes[] = $route;
     }
 
-    public function getRoute($url) {
+    public function getRoute($url)
+    {
         foreach ($this->routes as $route)
         {
             // Si la route correspond à l'URL
             if (($varsValues = $route->match($url)) !== false)
             {
-                //Solution
                 // Si elle a des variables
                 if ($route->hasVars())
                 {
@@ -44,7 +44,7 @@ class Router{
                 return $route;
             }
         }
-        // Solution
+
         throw new \RuntimeException('Aucune route ne correspond à l\'URL', self::NO_ROUTE);
     }
 }
