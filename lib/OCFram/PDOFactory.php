@@ -4,14 +4,16 @@ namespace OCFram;
 
 class PDOFactory{
     public static function getSQLServerConnection(){
-        $serverName = 'ACTARUS-ASP-SQL\JOON,1443';
+        $serverName = 'ACTARUS-ASP-SQL\JOON';
         $database = 'test';
         $username = 'sa';
         $password = 'sa';
-        $db = new \PDO('sqlsrv:Server='.$serverName.'; Database='.$database, $username, $password);
+        try {
+            $db = new \PDO("sqlsrv:Server=$serverName ; Database=$database", $username, $password);
+        } catch(\PDOException $e){
+            die($e->getMessage());
+        }
         $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(\PDO::ATTR_PERSISTENT , true);
-        $db->setAttribute(\PDO::ATTR_CURSOR , \PDO::CURSOR_SCROLL);
         return $db;
     }
 }

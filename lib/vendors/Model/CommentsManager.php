@@ -29,7 +29,7 @@ abstract class CommentsManager extends Manager
             throw new \RuntimeException('Le commentaire doit être validé pour être enregistré');
         }
     }
-    
+
     /**
      * Méthode permettant de récupérer une liste de commentaires.
      * @param $news La news sur laquelle on veut récupérer les commentaires
