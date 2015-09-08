@@ -5,7 +5,7 @@ use \Entity\Member;
 
 class MemberManagerPDO extends MemberManager{
     protected function add(Member $member){
-        $query = 'INSERT INTO members(nickname, firstname, lastname, dateofbirth, dateofregister, photo, biography) VALUES (:nickname, :firstname, :lastname, :dateofbirth, :dateofregister, :photo, :biography)';
+        $query = 'INSERT INTO members(nickname, firstname, lastname, dateofbirth, dateofregister, photo, biography) VALUES (:nickname, :firstname, :lastname, :dateofbirth, GETUTCDATE(), :photo, :biography)';
         /** @var $prepare \PDOStatement*/
         $prepare = $this->dao->prepare($query);
 
@@ -13,7 +13,6 @@ class MemberManagerPDO extends MemberManager{
         $prepare->bindValue(':firstname', $member->firstname());
         $prepare->bindValue(':lastname', $member->lastname());
         $prepare->bindValue(':dateofbirth', $member->dateofbirth());
-        $prepare->bindValue(':dateofregister', $member->dateofregister());
         $prepare->bindValue(':photo', $member->photo());
         $prepare->bindValue(':biography', $member->biography());
 

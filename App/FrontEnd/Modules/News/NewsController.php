@@ -60,9 +60,10 @@ class NewsController extends \OCFram\BackController {
         else
         {
             $comment = new Comment;
+            $comment->setNews($request->getData('news'));
         }
 
-        $formBuilder = new CommentFormBuilder($comment);
+        $formBuilder = new \FormBuilder\CommentFormBuilder($comment);
         $formBuilder->build();
 
         $form = $formBuilder->form();

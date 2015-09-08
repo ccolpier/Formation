@@ -3,6 +3,7 @@
     <route url="/formation/" module="News" action="index" />
     <route url="/formation/news.html" module="News" action="index" />
     <route url="/formation/news-([0-9]+)\.html" module="News" action="show" vars="id" />
+    <route url="/formation/commenter-([0-9]+)\.html" module="News" action="insertComment" vars="news" />
 
     <route url="/formation/member\.html" module="Member" action="index" />
     <route url="/formation/member-([0-9]+)\.html" module="Member" action="index" vars="id" />
