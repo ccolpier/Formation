@@ -3,13 +3,14 @@
 namespace Model;
 use \Entity\Member;
 
-class MemberManagerPDO extends MemberManager{
+class MembersManagerPDO extends MembersManager{
     protected function add(Member $member){
-        $query = 'INSERT INTO members(nickname, firstname, lastname, dateofbirth, dateofregister, photo, biography) VALUES (:nickname, :firstname, :lastname, :dateofbirth, GETUTCDATE(), :photo, :biography)';
+        $query = 'INSERT INTO members(nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography) VALUES (:nickname, :password, :firstname, :lastname, :dateofbirth, GETUTCDATE(), :photo, :biography)';
         /** @var $prepare \PDOStatement*/
         $prepare = $this->dao->prepare($query);
 
         $prepare->bindValue(':nickname', $member->nickname());
+        $prepare->bindValue(':password', $member->password());
         $prepare->bindValue(':firstname', $member->firstname());
         $prepare->bindValue(':lastname', $member->lastname());
         $prepare->bindValue(':dateofbirth', $member->dateofbirth());
@@ -22,7 +23,7 @@ class MemberManagerPDO extends MemberManager{
     }
 
     public function getList($debut = -1, $limite = -1){
-        $query = 'SELECT nickname, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id BETWEEN '.(int)$debut.' AND '.(int)$limite;
+        $query = 'SELECT nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id BETWEEN '.(int)$debut.' AND '.(int)$limite;
 
         /** @var $requete \PDOStatement*/
         $requete = $this->dao->query($query);
@@ -39,11 +40,12 @@ class MemberManagerPDO extends MemberManager{
         return $listeMembers;
     }
 
-    protected function modify(Member $membre){
+    protected function modify(Member $member){
         /** @var $prepare \PDOStatement*/
-        $prepare = $this->dao->prepare('UPDATE members SET nickname = :nickname, firstname = :firstname, lastname = :lastname,  dateofbirth = :dateofbirth, photo = :photo, biography = :biography WHERE id = :id');
+        $prepare = $this->dao->prepare('UPDATE members SET nickname = :nickname, password = :password, firstname = :firstname, lastname = :lastname,  dateofbirth = :dateofbirth, photo = :photo, biography = :biography WHERE id = :id');
 
         $prepare->bindValue(':nickname', $member->nickname());
+        $prepare->bindValue(':password', $member->password());
         $prepare->bindValue(':firstname', $member->firstname());
         $prepare->bindValue(':lastname', $member->lastname());
         $prepare->bindValue(':dateofbirth', $member->dateofbirth());
@@ -54,7 +56,7 @@ class MemberManagerPDO extends MemberManager{
     }
 
     public function getUnique($id){
-        $query = 'SELECT nickname, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id = '.(int)$id;
+        $query = 'SELECT nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id = '.(int)$id;
         /** @var $requete \PDOStatement*/
         $requete = $this->dao->query($query);
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Member');

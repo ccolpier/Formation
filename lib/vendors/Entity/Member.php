@@ -4,6 +4,7 @@ namespace Entity;
 
 class Member extends \OCFram\Entity {
     protected $nickname,
+        $password,
         $firstname,
         $lastname,
         $dateofbirth,
@@ -13,10 +14,11 @@ class Member extends \OCFram\Entity {
 
     //Codes d'erreurs
     const NICKNAME_INVALID = 1;
-    const FIRSTNAME_INVALID = 2;
-    const LASTNAME_INVALID = 3;
+    const PASSWORD_INVALID = 2;
+    const FIRSTNAME_INVALID = 3;
+    const LASTNAME_INVALID = 4;
     const PHOTO_INVALID = 5;
-    const BIOGRAPHY_INVALID = 5;
+    const BIOGRAPHY_INVALID = 6;
 
     public function isValid(){
         return !(empty($this->nickname) || empty($this->firstname) || empty($this->lastname) || empty($this->dateofbirth) || empty($this->dateofregister));
@@ -28,6 +30,15 @@ class Member extends \OCFram\Entity {
         }
         else {
             $this->erreurs[] = self::NICKNAME_INVALID;
+        }
+    }
+
+    public function setPassword($password){
+        if(is_string($password) && !empty($password)){
+            $this->password = $password;
+        }
+        else {
+            $this->erreurs[] = self::PASSWORD_INVALID;
         }
     }
 
@@ -77,6 +88,10 @@ class Member extends \OCFram\Entity {
 
     public function nickname(){
         return $this->nickname;
+    }
+
+    public function password() {
+        return $this->password;
     }
 
     public function firstname(){

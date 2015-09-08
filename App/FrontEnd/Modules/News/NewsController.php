@@ -2,7 +2,7 @@
 
 namespace App\FrontEnd\Modules\News;
 
-use Model\NewsManager;
+use \Model\NewsManager;
 use \OCFram\HTTPRequest;
 use \Entity\Comment;
 

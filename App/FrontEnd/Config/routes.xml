@@ -7,8 +7,8 @@
 
     <route url="/formation/member\.html" module="Member" action="index" />
     <route url="/formation/member-([0-9]+)\.html" module="Member" action="index" vars="id" />
-    <route url="/formation/inscription\.html" module="Member" action="register" />
-    <route url="/formation/connection\.html" module="Member" action="connect" />
+    <route url="/formation/register\.html" module="Member" action="register" />
+    <route url="/formation/connect\.html" module="Member" action="connect" />
     <route url="/formation/restore-pass\.html" module="Member" action="restore" />
     <route url="/formation/update-profile\.html" module="Member" action="update" />
     <route url="/formation/search\.html" module="Member" action="search" />
