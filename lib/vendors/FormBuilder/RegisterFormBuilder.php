@@ -20,6 +20,7 @@ class RegisterFormBuilder extends \OCFram\FormBuilder
             'maxLength' => 20,
             'validators' => [
                 new \Validator\MaxLengthValidator('Le mot de passe spécifié est trop long (20 caractères maximum)', 50),
+                new \Validator\MinLengthValidator('Le mot de passe spécifié est trop court (5 caractères minimum', 5),
                 new \Validator\NotNullValidator('Merci de spécifier le mot de passe'),
             ],
             ]))

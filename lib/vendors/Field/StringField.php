@@ -11,7 +11,7 @@ class StringField extends \OCFram\Field
 
         if (!empty($this->errorMessage))
         {
-            $widget .= $this->errorMessage.'<br />';
+            $widget .= '<br/><li>'.$this->errorMessage.'<li/>';
         }
 
         $widget .= '<label>'.$this->label.'</label><input type="text" name="'.$this->name.'"';

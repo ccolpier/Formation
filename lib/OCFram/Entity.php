@@ -12,7 +12,7 @@ class Entity implements  \ArrayAccess{
         $this->hydrate($valeurs);
     }
 
-    public function getId(){
+    public function id(){
         return $this->id;
     }
 

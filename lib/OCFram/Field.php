@@ -23,6 +23,7 @@ abstract class Field
 
     public function isValid()
     {
+        /** @var $validator Validator*/
         foreach ($this->validators as $validator)
         {
             if (!$validator->isValid($this->value))
@@ -102,6 +103,9 @@ abstract class Field
         if (is_string($value))
         {
             $this->value = $value;
+        }
+        if($value instanceof \DateTime){
+            $this->value = $value->format('Y-m-d');
         }
     }
 }

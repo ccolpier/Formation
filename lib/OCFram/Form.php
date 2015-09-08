@@ -25,6 +25,7 @@ class Form
         $view = '';
 
         // On génère un par un les champs du formulaire.
+        /** @var $field Field*/
         foreach ($this->fields as $field)
         {
             $view .= $field->buildWidget().'<br />';
@@ -57,5 +58,28 @@ class Form
     public function setEntity(Entity $entity)
     {
         $this->entity = $entity;
+    }
+
+    public function initValues(){
+//        foreach($this->entity as $attribut => $value){
+//            /** @var $field Field*/
+//            foreach($this->fields as $field){
+//                if($field->name() == $attribut){
+//                    echo 'a';
+//                    $field->setValue($value);
+//                }
+//            }
+//        }
+
+        /** @var $field Field*/
+        foreach($this->fields as $field){
+            $name = $field->name();
+            if(is_callable([$this->entity,$name])){
+                try {
+                    $val = call_user_func([$this->entity, $name]);
+                    $field->setValue($val);
+                } catch(\Exception $e) {}
+            }
+        }
     }
 }

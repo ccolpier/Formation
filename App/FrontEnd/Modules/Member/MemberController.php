@@ -37,11 +37,11 @@ class MemberController extends \OCFram\BackController{
         if ($request->method() == 'POST'){
             //On crée un objet membre selon les données
             $member = new Member([
-                'nickname' => $request->getData('nickname'),
+                'nickname' => $request->postData('nickname'),
                 'password' => $request->postData('password'),
                 'firstname' => $request->postData('firstname'),
                 'lastname' => $request->postData('lastname'),
-                'dateofbirth' => $request->postData('dateofbirth')
+                'dateofbirth' => new \DateTime($request->postData('dateofbirth'), new \DateTimeZone("UTC")),
             ]);
         }
         else {
@@ -51,7 +51,9 @@ class MemberController extends \OCFram\BackController{
         $formBuilder = new \FormBuilder\RegisterFormBuilder($member);
         $formBuilder->build();
 
+        /** @var $form \OCFram\Form*/
         $form = $formBuilder->form();
+        $form->initValues();
 
         $formHandler = new \OCFram\FormHandler($form, $this->managers->getManagerOf('Members'), $request);
 
@@ -64,7 +66,6 @@ class MemberController extends \OCFram\BackController{
 
         $this->page->addVar('member', $member);
         $this->page->addVar('form', $form->createView());
-        $this->page->addVar('title', 'Inscription');
     }
 
     public function executeConnect(HTTPRequest $request){

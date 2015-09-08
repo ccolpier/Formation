@@ -5,6 +5,6 @@ class IsDateValidator extends \OCFram\Validator
 {
     public function isValid($value)
     {
-        return (\DateTime::createFromFormat('Y-m-d', $value) !== FALSE);
+        return (\DateTime::createFromFormat('Y-m-d', $value, new \DateTimeZone("UTC")) !== FALSE);
     }
 }
