@@ -4,6 +4,7 @@ namespace OCFram;
 
 class Entity implements  \ArrayAccess{
     protected $id;
+    protected $erreurs = array();
 
     use Hydrator;
 

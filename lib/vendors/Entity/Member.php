@@ -11,36 +11,68 @@ class Member extends \OCFram\Entity {
         $photo,
         $biography;
 
+    //Codes d'erreurs
+    const NICKNAME_INVALID = 1;
+    const FIRSTNAME_INVALID = 2;
+    const LASTNAME_INVALID = 3;
+    const PHOTO_INVALID = 5;
+    const BIOGRAPHY_INVALID = 5;
+
     public function isValid(){
-        return !(empty($this->nickname()) || empty($this->firstname) || empty($this->lastname) || empty($this->dateofbirth) || empty($this->dateofregister));
+        return !(empty($this->nickname) || empty($this->firstname) || empty($this->lastname) || empty($this->dateofbirth) || empty($this->dateofregister));
     }
 
-    public function setNickname(){
-
+    public function setNickname($nickname){
+        if(is_string($nickname) && !empty($nickname)){
+            $this->nickname = $nickname;
+        }
+        else {
+            $this->erreurs[] = self::NICKNAME_INVALID;
+        }
     }
 
-    public function setFirstname(){
-
+    public function setFirstname($firstname){
+        if(is_string($firstname) && !empty($firstname)){
+            $this->firstname = $firstname;
+        }
+        else {
+            $this->erreurs[] = self::FIRSTNAME_INVALID;
+        }
     }
 
-    public function setLastname(){
-
+    public function setLastname($lastname){
+        if(is_string($lastname) && !empty($lastname)){
+            $this->lastname = $lastname;
+        }
+        else {
+            $this->erreurs[] = self::LASTNAME_INVALID;
+        }
     }
 
-    public function setDateofbirth(){
-
+    public function setDateofbirth(\DateTime $dateofbirth){
+        $this->dateofbirth = $dateofbirth;
     }
 
-    public function setDateofregister(){
-
+    public function setDateofregister(\DateTime $dateofregister){
+        $this->dateofregister = $dateofregister;
     }
 
-    public function setPhoto(){
-
+    public function setPhoto($photo){
+        if(is_string($photo) && !empty($photo)){
+            $this->photo = $photo;
+        }
+        else {
+            $this->erreurs[] = self::PHOTO_INVALID;
+        }
     }
 
-    public function setBiography(){
-
+    public function setBiography($biography){
+        if(is_string($biography) && !empty($biography)){
+            $this->photo = $biography;
+        }
+        else {
+            $this->erreurs[] = self::BIOGRAPHY_INVALID;
+        }
     }
 
     public function nickname(){

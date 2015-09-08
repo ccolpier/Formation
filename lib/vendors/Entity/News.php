@@ -3,8 +3,7 @@ namespace Entity;
 
 
 class News extends \OCFram\Entity {
-    protected $id,
-        $auteur,
+    protected $auteur,
         $titre,
         $contenu,
         $dateAjout,

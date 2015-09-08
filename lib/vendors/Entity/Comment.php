@@ -5,8 +5,7 @@ use \OCFram\Entity;
 
 class Comment extends Entity
 {
-    protected $id,
-        $news,
+    protected $news,
         $auteur,
         $contenu,
         $date;

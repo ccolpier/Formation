@@ -3,7 +3,7 @@
 namespace Model;
 use \Entity\Member;
 
-class MemberManager extends \OCFram\Manager{
+abstract class MemberManager extends \OCFram\Manager{
 
     abstract protected function add(Member $member);
 
@@ -23,7 +23,7 @@ class MemberManager extends \OCFram\Manager{
 
     abstract protected function modify(Member $membre);
 
-    abstract public function get($id);
+    abstract public function getUnique($id);
 
     abstract public function delete($id);
 }

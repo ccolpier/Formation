@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b16b284-93d0-4fd9-9632-8195043dda41" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/OCFram/Application.php" afterPath="$PROJECT_DIR$/lib/OCFram/Application.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php" afterPath="$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Entity/Comment.php" afterPath="$PROJECT_DIR$/lib/vendors/Entity/Comment.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/OCFram/Entity.php" afterPath="$PROJECT_DIR$/lib/OCFram/Entity.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Entity/Member.php" afterPath="$PROJECT_DIR$/lib/vendors/Entity/Member.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Model/MemberManager.php" afterPath="$PROJECT_DIR$/lib/vendors/Model/MemberManager.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php" afterPath="$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/News/NewsController.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/News/NewsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Model/NewsManagerPDO.php" afterPath="$PROJECT_DIR$/lib/vendors/Model/NewsManagerPDO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/OCFram/Page.php" afterPath="$PROJECT_DIR$/lib/OCFram/Page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/OCFram/Route.php" afterPath="$PROJECT_DIR$/lib/OCFram/Route.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/OCFram/Router.php" afterPath="$PROJECT_DIR$/lib/OCFram/Router.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/index.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Entity/News.php" afterPath="$PROJECT_DIR$/lib/vendors/Entity/News.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Formation.iws" />
@@ -36,28 +30,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NewsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/FrontEnd/Modules/News/NewsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
-              <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-              <folding>
-                <element signature="e#45#67#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Managers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/OCFram/Managers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="routes.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/FrontEnd/Config/routes.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -68,11 +40,37 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MemberManagerPDO.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.56263983">
+              <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+              <folding>
+                <marker date="1441708091866" expanded="true" signature="153:343" placeholder="INSERT INTO ..." />
+                <marker date="1441708091866" expanded="true" signature="1058:1192" placeholder="SELECT nickn..members..." />
+                <marker date="1441708091866" expanded="true" signature="1913:2082" placeholder="UPDATE membe..." />
+                <marker date="1441708091866" expanded="true" signature="2560:2668" placeholder="SELECT nickn..members..." />
+                <marker date="1441708091866" expanded="true" signature="3259:3290" placeholder="DELETE FROM ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MemberManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/vendors/Model/MemberManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.346153">
+              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NewsManagerPDO.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/vendors/Model/NewsManagerPDO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-45.76923">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state vertical-scroll-proportion="-10.192307">
+              <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
               <folding>
                 <marker date="1441699664799" expanded="true" signature="148:274" placeholder="INSERT INTO ..." />
                 <marker date="1441699664799" expanded="true" signature="621:723" placeholder="UPDATE news ..." />
@@ -85,13 +83,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MemberManagerPDO.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php">
+      <file leaf-file-name="CommentsManagerPDO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.576923">
-              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.65384614">
+              <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
               <folding>
-                <marker date="1441705298221" expanded="true" signature="153:174" placeholder="INSERT INTO ..." />
+                <marker date="1441698626473" expanded="true" signature="182:279" placeholder="INSERT INTO ..." />
+                <marker date="1441698626473" expanded="true" signature="810:881" placeholder="SELECT id, n..." />
+                <marker date="1441698626473" expanded="true" signature="1338:1409" placeholder="UPDATE comme..." />
+                <marker date="1441698626473" expanded="true" signature="1687:1748" placeholder="SELECT id, n..comments..." />
+                <marker date="1441698626473" expanded="true" signature="2023:2055" placeholder="DELETE FROM ..." />
+                <marker date="1441698626473" expanded="true" signature="2150:2184" placeholder="DELETE FROM ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommentsManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/vendors/Model/CommentsManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-24.192308">
+              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+              <folding>
+                <element signature="e#24#44#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,27 +115,18 @@
       <file leaf-file-name="Member.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/vendors/Entity/Member.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="-20.923077">
+              <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
               <folding>
-                <element signature="e#721#786#0#PHP" expanded="false" />
-                <element signature="e#792#859#0#PHP" expanded="false" />
-                <element signature="e#865#930#0#PHP" expanded="false" />
-                <element signature="e#936#1007#0#PHP" expanded="false" />
-                <element signature="e#1013#1090#0#PHP" expanded="false" />
-                <element signature="e#1096#1155#0#PHP" expanded="false" />
-                <element signature="e#1161#1228#0#PHP" expanded="false" />
+                <element signature="e#592#823#0#PHP" expanded="false" />
+                <element signature="e#829#1067#0#PHP" expanded="false" />
+                <element signature="e#1073#1304#0#PHP" expanded="false" />
+                <element signature="e#1542#1752#0#PHP" expanded="false" />
+                <element signature="e#1758#1992#0#PHP" expanded="false" />
+                <element signature="e#1998#2063#0#PHP" expanded="false" />
+                <element signature="e#2373#2432#0#PHP" expanded="false" />
+                <element signature="e#2438#2505#0#PHP" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entity.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/OCFram/Entity.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3232662">
-              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -128,28 +134,28 @@
       <file leaf-file-name="Comment.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/vendors/Entity/Comment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.461538">
-              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+            <state vertical-scroll-proportion="3.2692308">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewsManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/vendors/Model/NewsManager.php">
+      <file leaf-file-name="News.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/vendors/Entity/News.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.730769">
-              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+            <state vertical-scroll-proportion="-3.2692308">
+              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Page.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/OCFram/Page.php">
+      <file leaf-file-name="Entity.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/OCFram/Entity.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.307692">
-              <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+            <state vertical-scroll-proportion="-3.9230769">
+              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -178,7 +184,6 @@
         <option value="$PROJECT_DIR$/App/BackEnd/Modules/News/Views/index.php" />
         <option value="$PROJECT_DIR$/App/BackEnd/Modules/News/Views/_form.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/show.php" />
-        <option value="$PROJECT_DIR$/lib/vendors/Model/CommentsManager.php" />
         <option value="$PROJECT_DIR$/Web/.htaccess" />
         <option value="$PROJECT_DIR$/App/BackEnd/Modules/Connexion/ConnexionController.php" />
         <option value="$PROJECT_DIR$/lib/OCFram/Config.php" />
@@ -188,7 +193,6 @@
         <option value="$PROJECT_DIR$/lib/OCFram/Form.php" />
         <option value="$PROJECT_DIR$/lib/vendors/Field/StringField.php" />
         <option value="$PROJECT_DIR$/lib/vendors/Field/TextField.php" />
-        <option value="$PROJECT_DIR$/lib/OCFram/Entity.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/insertComment.php" />
         <option value="$PROJECT_DIR$/lib/OCFram/Validator.php" />
         <option value="$PROJECT_DIR$/lib/vendors/Validator/NotNullValidator.php" />
@@ -205,11 +209,8 @@
         <option value="$PROJECT_DIR$/App/BackEnd/Modules/News/NewsController.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php" />
         <option value="$PROJECT_DIR$/Errors/404.html" />
-        <option value="$PROJECT_DIR$/lib/vendors/Entity/News.php" />
-        <option value="$PROJECT_DIR$/lib/vendors/Entity/Comment.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Config/routes.xml" />
         <option value="$PROJECT_DIR$/lib/OCFram/BackController.php" />
-        <option value="$PROJECT_DIR$/lib/vendors/Model/MemberManager.php" />
         <option value="$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/index.php" />
         <option value="$PROJECT_DIR$/lib/OCFram/Route.php" />
@@ -219,8 +220,13 @@
         <option value="$PROJECT_DIR$/lib/vendors/Model/NewsManagerPDO.php" />
         <option value="$PROJECT_DIR$/lib/vendors/Model/NewsManager.php" />
         <option value="$PROJECT_DIR$/lib/OCFram/Page.php" />
-        <option value="$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php" />
+        <option value="$PROJECT_DIR$/lib/vendors/Entity/Comment.php" />
+        <option value="$PROJECT_DIR$/lib/vendors/Entity/News.php" />
+        <option value="$PROJECT_DIR$/lib/OCFram/Entity.php" />
         <option value="$PROJECT_DIR$/lib/vendors/Entity/Member.php" />
+        <option value="$PROJECT_DIR$/lib/vendors/Model/CommentsManager.php" />
+        <option value="$PROJECT_DIR$/lib/vendors/Model/MemberManager.php" />
+        <option value="$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php" />
       </list>
     </option>
   </component>
@@ -687,13 +693,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/App/BackEnd/Modules/News/Views/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/BackEnd/Modules/News/Views/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617">
@@ -881,28 +880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/CommentsManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding>
-            <element signature="e#24#44#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Errors/404.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13310961">
           <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vendors/Entity/News.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48657718">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,29 +908,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/MemberManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding>
-            <marker date="1441698626473" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1441698626473" expanded="true" signature="-1:-1" placeholder="SELECT id, n..." />
-            <marker date="1441698626473" expanded="true" signature="-1:-1" placeholder="UPDATE comme..." />
-            <marker date="1441698626473" expanded="true" signature="-1:-1" placeholder="SELECT id, n..comments..." />
-            <marker date="1441698626473" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1441698626473" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1019,21 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/NewsManagerPDO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-45.76923">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding>
-            <marker date="1441699664799" expanded="true" signature="148:274" placeholder="INSERT INTO ..." />
-            <marker date="1441699664799" expanded="true" signature="621:723" placeholder="UPDATE news ..." />
-            <marker date="1441699664799" expanded="true" signature="1076:1179" placeholder="SELECT id, a..news..." />
-            <marker date="1441699664799" expanded="true" signature="1922:1999" placeholder="SELECT id, a..news..." />
-            <marker date="1441699664799" expanded="true" signature="2493:2519" placeholder="SELECT COUNT..news..." />
-            <marker date="1441699664799" expanded="true" signature="2760:2788" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/vendors/Model/NewsManager.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.730769">
@@ -1058,45 +1001,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php">
+    <entry file="file://$PROJECT_DIR$/lib/vendors/Entity/News.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding>
-            <marker date="1441705298221" expanded="true" signature="153:174" placeholder="INSERT INTO ..." />
-          </folding>
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/OCFram/Entity.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/vendors/Entity/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.461538">
-          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        <state vertical-scroll-proportion="3.2692308">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/vendors/Entity/Member.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="-20.923077">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
-            <element signature="e#721#786#0#PHP" expanded="false" />
-            <element signature="e#792#859#0#PHP" expanded="false" />
-            <element signature="e#865#930#0#PHP" expanded="false" />
-            <element signature="e#936#1007#0#PHP" expanded="false" />
-            <element signature="e#1013#1090#0#PHP" expanded="false" />
-            <element signature="e#1096#1155#0#PHP" expanded="false" />
-            <element signature="e#1161#1228#0#PHP" expanded="false" />
+            <element signature="e#592#823#0#PHP" expanded="false" />
+            <element signature="e#829#1067#0#PHP" expanded="false" />
+            <element signature="e#1073#1304#0#PHP" expanded="false" />
+            <element signature="e#1542#1752#0#PHP" expanded="false" />
+            <element signature="e#1758#1992#0#PHP" expanded="false" />
+            <element signature="e#1998#2063#0#PHP" expanded="false" />
+            <element signature="e#2373#2432#0#PHP" expanded="false" />
+            <element signature="e#2438#2505#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/OCFram/Entity.php">
+    <entry file="file://$PROJECT_DIR$/lib/OCFram/Manager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3232662">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.07606264">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/CommentsManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.192308">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+          <folding>
+            <element signature="e#24#44#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65384614">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+          <folding>
+            <marker date="1441698626473" expanded="true" signature="182:279" placeholder="INSERT INTO ..." />
+            <marker date="1441698626473" expanded="true" signature="810:881" placeholder="SELECT id, n..." />
+            <marker date="1441698626473" expanded="true" signature="1338:1409" placeholder="UPDATE comme..." />
+            <marker date="1441698626473" expanded="true" signature="1687:1748" placeholder="SELECT id, n..comments..." />
+            <marker date="1441698626473" expanded="true" signature="2023:2055" placeholder="DELETE FROM ..." />
+            <marker date="1441698626473" expanded="true" signature="2150:2184" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/NewsManagerPDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.192307">
+          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+          <folding>
+            <marker date="1441699664799" expanded="true" signature="148:274" placeholder="INSERT INTO ..." />
+            <marker date="1441699664799" expanded="true" signature="621:723" placeholder="UPDATE news ..." />
+            <marker date="1441699664799" expanded="true" signature="1076:1179" placeholder="SELECT id, a..news..." />
+            <marker date="1441699664799" expanded="true" signature="1922:1999" placeholder="SELECT id, a..news..." />
+            <marker date="1441699664799" expanded="true" signature="2493:2519" placeholder="SELECT COUNT..news..." />
+            <marker date="1441699664799" expanded="true" signature="2760:2788" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/MemberManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.346153">
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56263983">
+          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+          <folding>
+            <marker date="1441708091866" expanded="true" signature="153:343" placeholder="INSERT INTO ..." />
+            <marker date="1441708091866" expanded="true" signature="1058:1192" placeholder="SELECT nickn..members..." />
+            <marker date="1441708091866" expanded="true" signature="1913:2082" placeholder="UPDATE membe..." />
+            <marker date="1441708091866" expanded="true" signature="2560:2668" placeholder="SELECT nickn..members..." />
+            <marker date="1441708091866" expanded="true" signature="3259:3290" placeholder="DELETE FROM ..." />
+          </folding>
         </state>
       </provider>
     </entry>
