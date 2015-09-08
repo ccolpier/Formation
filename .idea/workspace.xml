@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b16b284-93d0-4fd9-9632-8195043dda41" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php" afterPath="$PROJECT_DIR$/lib/vendors/Model/CommentsManagerPDO.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php" afterPath="$PROJECT_DIR$/lib/vendors/Model/MemberManagerPDO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/News/NewsController.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/News/NewsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/index.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Templates/layout.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Templates/layout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Config/routes.xml" afterPath="$PROJECT_DIR$/App/FrontEnd/Config/routes.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/show.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/News/Views/show.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Formation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.13310961">
-              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -1029,7 +1021,7 @@
     <entry file="file://$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13310961">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
           <folding />
         </state>
       </provider>

@@ -5,7 +5,7 @@ use \OCFram\HTTPRequest;
 
 class MemberController extends \OCFram\BackController{
     public function executeIndex(HTTPRequest $request){
-        
+         
     }
 
     public function executeRegister(HTTPRequest $request){
