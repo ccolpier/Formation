@@ -31,7 +31,7 @@ class NewsManagerPDO extends NewsManager{
     public function getList($debut = -1, $limite = -1){
         $query = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id BETWEEN '.(int)$debut.' AND '.(int)$limite;
 
-        // Solution. DeuxiËme ligne nÈcessaire pour bind les rÈsultats de la requÍte dans un type d'objets PHP
+        // Solution. Deuxi√®me ligne n√©cessaire pour bind les r√©sultats de la requ√™te dans un type d'objets PHP
         $requete = $this->dao->query($query);
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\News');
 
@@ -49,7 +49,6 @@ class NewsManagerPDO extends NewsManager{
 
     public function getUnique($id)
     {
-        echo $id;
         $query = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id = '.(int)$id;
         $requete = $this->dao->query($query);
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\News');
@@ -67,7 +66,7 @@ class NewsManagerPDO extends NewsManager{
     public function count(){
         $query = 'SELECT COUNT(id) FROM news';
         $result = $this->dao->query($query);
-        return $result->fetchColumn(0); // Renvoie le rÈsultat de la premire colonne de la premiËre ligne => c‡d le count
+        return $result->fetchColumn(0); // Renvoie le r√©sultat de la premire colonne de la premi√®re ligne => c√†d le count
     }
 
     public function delete($id)

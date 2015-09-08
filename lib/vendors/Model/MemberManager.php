@@ -5,27 +5,25 @@ use \Entity\Member;
 
 class MemberManager extends \OCFram\Manager{
 
-    abstract protected function add(Comment $comment);
+    abstract protected function add(Member $member);
 
-    public function save(Comment $comment)
+    public function save(Member $member)
     {
-        if ($comment->isValid())
+        if ($member->isValid())
         {
-            $comment->isNew() ? $this->add($comment) : $this->modify($comment);
+            $member->isNew() ? $this->add($member) : $this->modify($member);
         }
         else
         {
-            throw new \RuntimeException('Le commentaire doit être validé pour être enregistré');
+            throw new \RuntimeException('Le member doit être validé pour être enregistré');
         }
     }
 
-    abstract public function getListOf($news);
+    abstract public function getList($debut = -1, $limite = -1);
 
-    abstract protected function modify(Comment $comment);
+    abstract protected function modify(Member $membre);
 
     abstract public function get($id);
 
     abstract public function delete($id);
-
-    abstract public function deleteFromNews($news);
 }

@@ -17,7 +17,7 @@ class Route {
     }
 
     public function hasVars(){
-        return !empty($varsNames);
+        return !empty($this->varsNames);
     }
 
     public function match($url)

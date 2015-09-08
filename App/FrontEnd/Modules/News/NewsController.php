@@ -2,6 +2,7 @@
 
 namespace App\FrontEnd\Modules\News;
 
+use Model\NewsManager;
 use \OCFram\HTTPRequest;
 use \Entity\Comment;
 
@@ -30,7 +31,9 @@ class NewsController extends \OCFram\BackController {
 
     // Solution
     public function executeShow(HTTPRequest $request){
-        $news = $this->managers->getManagerOf('News')->getUnique($request->getData('id'));
+        /** @var $NewManager NewsManager */
+        $NewManager = $this->managers->getManagerOf('News');
+        $news = $NewManager->getUnique($request->getData('id'));
 
         if (empty($news))
         {

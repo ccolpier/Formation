@@ -15,6 +15,8 @@ class Page extends ApplicationComponent{
     public function getGeneratedPage(){
         if (file_exists($this->contentFile))
         {
+            $this->App()->httpResponse()->addHeader('Content-Type: text/html; charset=ISO-8859-1');
+
             $user = $this->app->user();
             extract($this->vars);
 
