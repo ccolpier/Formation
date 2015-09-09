@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b16b284-93d0-4fd9-9632-8195043dda41" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vendors/Model/MissingPassManagerPDO.php" afterPath="$PROJECT_DIR$/lib/vendors/Model/MissingPassManagerPDO.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/Views/logout.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/Views/logout.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/Views/restore.php" afterPath="$PROJECT_DIR$/App/FrontEnd/Modules/Member/Views/restore.php" />
-    </list>
+    <list default="true" id="3b16b284-93d0-4fd9-9632-8195043dda41" name="Default" comment="" />
     <ignored path="Formation.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -119,8 +114,8 @@
       <file leaf-file-name="routes.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/FrontEnd/Config/routes.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24021739">
-              <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -167,7 +162,6 @@
         <option value="$PROJECT_DIR$/lib/vendors/FormHandler/RegisterFormHandler.php" />
         <option value="$PROJECT_DIR$/lib/OCFram/Form.php" />
         <option value="$PROJECT_DIR$/lib/vendors/Model/MembersManager.php" />
-        <option value="$PROJECT_DIR$/App/FrontEnd/Config/routes.xml" />
         <option value="$PROJECT_DIR$/lib/OCFram/HTTPResponse.php" />
         <option value="$PROJECT_DIR$/lib/OCFram/Application.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Templates/layout.php" />
@@ -192,6 +186,7 @@
         <option value="$PROJECT_DIR$/App/FrontEnd/Modules/Member/Views/restore.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Modules/Member/MemberController.php" />
         <option value="$PROJECT_DIR$/App/FrontEnd/Modules/Member/Views/logout.php" />
+        <option value="$PROJECT_DIR$/App/FrontEnd/Config/routes.xml" />
       </list>
     </option>
   </component>
@@ -1198,8 +1193,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App/FrontEnd/Config/routes.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24021739">
-          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
           <folding />
         </state>
       </provider>
