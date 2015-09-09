@@ -1,6 +1,7 @@
 <?php
 namespace Entity;
 
+use \Others\DateTimeFram;
 
 class News extends \OCFram\Entity {
     protected $auteur,
@@ -48,12 +49,12 @@ class News extends \OCFram\Entity {
         $this->contenu = $contenu;
     }
 
-    public function setDateAjout(\DateTime $dateAjout)
+    public function setDateAjout(DateTimeFram $dateAjout)
     {
         $this->dateAjout = $dateAjout;
     }
 
-    public function setDateModif(\DateTime $dateModif)
+    public function setDateModif(DateTimeFram $dateModif)
     {
         $this->dateModif = $dateModif;
     }

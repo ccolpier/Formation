@@ -3,6 +3,7 @@
 namespace App\FrontEnd\Modules\Member;
 use \OCFram\HTTPRequest;
 use \Entity\Member;
+use \Others\DateTimeFram;
 
 class MemberController extends \OCFram\BackController{
     /** Affiche la page du membre actuel ou la page d'un membre donné si celui-ci est précisé*/
@@ -41,7 +42,8 @@ class MemberController extends \OCFram\BackController{
                 'password' => $request->postData('password'),
                 'firstname' => $request->postData('firstname'),
                 'lastname' => $request->postData('lastname'),
-                'dateofbirth' => new \DateTime($request->postData('dateofbirth'), new \DateTimeZone("UTC")),
+                'dateofbirth' => new DateTimeFram($request->postData('dateofbirth'), new \DateTimeZone("UTC")),
+                'dateofregister' => new DateTimeFram(NULL, new \DateTimeZone("UTC")),
             ]);
         }
         else {

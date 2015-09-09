@@ -2,6 +2,7 @@
 
 namespace Model;
 use \Entity\Member;
+use \Others\DateTimeFram;
 
 class MembersManagerPDO extends MembersManager{
     protected function add(Member $member){
@@ -33,8 +34,8 @@ class MembersManagerPDO extends MembersManager{
         /** @var $member Member*/
         foreach ($listeMembers as $member)
         {
-            $member->setDateofbirth(new \DateTime($member->dateofbirth(), new \DateTimeZone("UTC")));
-            $member->setDateofregister(new \DateTime($member->dateofregister(), new \DateTimeZone("UTC")));
+            $member->setDateofbirth(new DateTimeFram($member->dateofbirth(), new \DateTimeZone("UTC")));
+            $member->setDateofregister(new DateTimeFram($member->dateofregister(), new \DateTimeZone("UTC")));
         }
 
         return $listeMembers;
@@ -64,8 +65,8 @@ class MembersManagerPDO extends MembersManager{
         /** @var $member Member*/
         if ($member = $requete->fetch())
         {
-            $member->setDateofbirth(new \DateTime($member->dateofbirth(), new \DateTimeZone("UTC")));
-            $member->setDateofregister(new \DateTime($member->dateofregister(), new \DateTimeZone("UTC")));
+            $member->setDateofbirth(new DateTimeFram($member->dateofbirth(), new \DateTimeZone("UTC")));
+            $member->setDateofregister(new DateTimeFram($member->dateofregister(), new \DateTimeZone("UTC")));
         }
 
         return $member;

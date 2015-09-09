@@ -36,7 +36,7 @@ class CommentsManagerPDO extends CommentsManager
 
         foreach ($comments as $comment)
         {
-            $comment->setDate(new \DateTime($comment->date(), new \DateTimeZone("UTC")));
+            $comment->setDate(new DateTimeFram($comment->date(), new \DateTimeZone("UTC")));
         }
 
         return $comments;

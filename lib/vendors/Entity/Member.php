@@ -2,6 +2,8 @@
 
 namespace Entity;
 
+use \Others\DateTimeFram;
+
 class Member extends \OCFram\Entity {
     protected $nickname,
         $password,
@@ -60,11 +62,11 @@ class Member extends \OCFram\Entity {
         }
     }
 
-    public function setDateofbirth(\DateTime $dateofbirth){
+    public function setDateofbirth(DateTimeFram $dateofbirth){
         $this->dateofbirth = $dateofbirth;
     }
 
-    public function setDateofregister(\DateTime $dateofregister){
+    public function setDateofregister(DateTimeFram $dateofregister){
         $this->dateofregister = $dateofregister;
     }
 

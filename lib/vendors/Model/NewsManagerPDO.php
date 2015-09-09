@@ -3,6 +3,7 @@
 namespace Model;
 
 use Entity\News;
+use \Others\DateTimeFram;
 
 class NewsManagerPDO extends NewsManager{
     protected function add(News $news)
@@ -38,10 +39,11 @@ class NewsManagerPDO extends NewsManager{
         $listeNews = $requete->fetchAll();
 
         // Solution. Le but est d'utiliser le type DateTime de PHP pour la gestion de dates
+        /** @var $news News*/
         foreach ($listeNews as $news)
         {
-            $news->setDateAjout(new \DateTime($news->dateAjout(), new \DateTimeZone("UTC")));
-            $news->setDateModif(new \DateTime($news->dateModif(), new \DateTimeZone("UTC")));
+            $news->setDateAjout(new DateTimeFram($news->dateAjout(), new \DateTimeZone("UTC")));
+            $news->setDateModif(new DateTimeFram($news->dateModif(), new \DateTimeZone("UTC")));
         }
 
         return $listeNews;
@@ -54,10 +56,11 @@ class NewsManagerPDO extends NewsManager{
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\News');
 
         //Solution
+        /** @var $news News*/
         if ($news = $requete->fetch())
         {
-            $news->setDateAjout(new \DateTime($news->dateAjout(), new \DateTimeZone("UTC")));
-            $news->setDateModif(new \DateTime($news->dateModif(), new \DateTimeZone("UTC")));
+            $news->setDateAjout(new DateTimeFram($news->dateAjout(), new \DateTimeZone("UTC")));
+            $news->setDateModif(new DateTimeFram($news->dateModif(), new \DateTimeZone("UTC")));
         }
 
         return $news;

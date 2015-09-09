@@ -2,6 +2,7 @@
 namespace Entity;
 
 use \OCFram\Entity;
+use \Others\DateTimeFram;
 
 class Comment extends Entity
 {
@@ -43,7 +44,7 @@ class Comment extends Entity
         $this->contenu = $contenu;
     }
 
-    public function setDate(\DateTime $date)
+    public function setDate(DateTimeFram $date)
     {
         $this->date = $date;
     }
