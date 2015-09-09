@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
     <route url="/formation/" module="News" action="index" />
+    <route url="/formation/index.html" module="News" action="index" />
     <route url="/formation/news.html" module="News" action="index" />
     <route url="/formation/news-([0-9]+)\.html" module="News" action="show" vars="id" />
     <route url="/formation/commenter-([0-9]+)\.html" module="News" action="insertComment" vars="news" />
@@ -9,6 +10,7 @@
     <route url="/formation/member-([0-9]+)\.html" module="Member" action="index" vars="id" />
     <route url="/formation/register\.html" module="Member" action="register" />
     <route url="/formation/connect\.html" module="Member" action="connect" />
+    <route url="/formation/logout.html" module="Member" action="logout" />
     <route url="/formation/restore-pass\.html" module="Member" action="restore" />
     <route url="/formation/update-profile\.html" module="Member" action="update" />
     <route url="/formation/search\.html" module="Member" action="search" />

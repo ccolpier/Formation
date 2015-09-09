@@ -24,7 +24,7 @@ class MembersManagerPDO extends MembersManager{
     }
 
     public function getList($debut = -1, $limite = -1){
-        $query = 'SELECT nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id BETWEEN '.(int)$debut.' AND '.(int)$limite;
+        $query = 'SELECT id, nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id BETWEEN '.(int)$debut.' AND '.(int)$limite;
 
         /** @var $requete \PDOStatement*/
         $requete = $this->dao->query($query);
@@ -56,8 +56,13 @@ class MembersManagerPDO extends MembersManager{
         $prepare->execute();
     }
 
+    public function getIdByName($nickname){
+        $member = $this->getUniqueByName($nickname);
+        return $member->id();
+    }
+
     public function getUnique($id){
-        $query = 'SELECT nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id = '.(int)$id;
+        $query = 'SELECT id, nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE id = '.(int)$id;
         /** @var $requete \PDOStatement*/
         $requete = $this->dao->query($query);
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Member');
@@ -70,6 +75,27 @@ class MembersManagerPDO extends MembersManager{
         }
 
         return $member;
+    }
+
+    public function getUniqueByName($nickname){
+        $query = 'SELECT id, nickname, password, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE nickname = :nickname';
+        /** @var $requete \PDOStatement*/
+        $requete = $this->dao->prepare($query);
+        $requete->bindValue(':nickname', $nickname);
+        $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Member');
+        $requete->execute();
+
+        /** @var $member Member*/
+        if($member = $requete->fetch())
+        {
+            $member->setDateofbirth(new DateTimeFram($member->dateofbirth(), new \DateTimeZone("UTC")));
+            $member->setDateofregister(new DateTimeFram($member->dateofregister(), new \DateTimeZone("UTC")));
+        }
+        return $member;
+    }
+
+    public function nicknameAlreadyTaken($nickname){
+        return !empty($this->getUniqueByName($nickname));
     }
 
     public function delete($id){

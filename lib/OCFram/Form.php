@@ -20,6 +20,10 @@ class Form
         return $this;
     }
 
+    public function fields(){
+        return $this->fields;
+    }
+
     public function createView()
     {
         $view = '';

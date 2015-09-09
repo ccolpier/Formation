@@ -23,7 +23,13 @@ abstract class MembersManager extends \OCFram\Manager{
 
     abstract protected function modify(Member $member);
 
+    abstract public function getIdByName($nickname);
+
     abstract public function getUnique($id);
+
+    abstract public function getUniqueByName($nickname);
+
+    abstract public function nicknameAlreadyTaken($nickname);
 
     abstract public function delete($id);
 }

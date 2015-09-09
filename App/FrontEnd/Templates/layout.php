@@ -23,6 +23,7 @@
             <?php if ($user->isAuthenticated()) { ?>
                 <li><a href="/formation/admin/">Admin</a></li>
                 <li><a href="/formation/admin/news-insert.html">Ajouter une news</a></li>
+                <li><a href="/formation/logout.html">Se déconnecter</a></li>
             <?php } else {?>
                 <li><a href="/formation/register.html">Inscription</a></li>
                 <li><a href="/formation/connection.html">Connexion</a></li>

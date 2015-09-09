@@ -34,6 +34,12 @@ class MemberController extends \OCFram\BackController{
 
     /** Affiche le formulaire d'inscription */
     public function executeRegister(HTTPRequest $request){
+        //Si le membre est connecté on le redirige
+        $user = $this->app->user();
+        if($user->isAuthenticated()){
+            $this->app->httpResponse()->redirect('/formation/index.html');
+        }
+
         //Si le formulaire a été rempli
         if ($request->method() == 'POST'){
             //On crée un objet membre selon les données
@@ -57,21 +63,46 @@ class MemberController extends \OCFram\BackController{
         $form = $formBuilder->form();
         $form->initValues();
 
-        $formHandler = new \OCFram\FormHandler($form, $this->managers->getManagerOf('Members'), $request);
+        /** @var $manager \Model\MembersManager*/
+        $manager = $this->managers->getManagerOf('Members');
 
-        //TODO : SI formulaire valide, process dans le modèle pour voir SI valeur acceptable ALORS insérer et rediriger vers page d'index SINON notifier valeur incorrecte SINON notifier formulaire incorrecte
-        if ($formHandler->process())
+        // Appels à des fonctions du manager pour vérifier que le pseudo n'est pas déjà pris et que le formulaire est valide
+        if(!empty($member->nickname()) && !$manager->nicknameAlreadyTaken($member->nickname()))
         {
-            $this->app->user()->setFlash('Le commentaire a bien été ajouté, merci !');
-            $this->app->httpResponse()->redirect('news-'.$request->getData('news').'.html');
+            $formHandler = new \OCFram\FormHandler($form, $manager, $request);
+            if ($formHandler->process())
+            {
+                //Si le membre a été correctement inscrit, on redirige vers la page d'index du membre en connectant le membre
+                $user->setFlash('Vous avez été correctement inscrit !');
+                $user->setAttribute('connected_id', $manager->getIdByName($member->nickname()));
+                $user->setAuthenticated(true);
+                $this->app->httpResponse()->redirect('/formation/member.html');
+            }
         }
-
+        // Si juste le nom est pris, on notifie l'utilisateur
+        if($manager->nicknameAlreadyTaken($member->nickname())){
+            $this->app->user()->setFlash('Ce pseudo est déjà pris !');
+        }
+        // Si on a pas validé, on recharge la page mais avec les anciennes valeurs du formulaire
         $this->page->addVar('member', $member);
         $this->page->addVar('form', $form->createView());
     }
 
     public function executeConnect(HTTPRequest $request){
+        //Si données reçues par session, alors on se connecte
+    }
 
+    public function executeLogout(HTTPRequest $request){
+        $user = $this->app()->user();
+        if($user->isAuthenticated()) {
+            $user->setFlash('Vous avez été deconnecté.');
+            $user->setAuthenticated(false);
+            $user->setAttribute('connected_id', NULL);
+        }
+        else{
+            $user->setFlash('Vous n\'êtes pas connecté.');
+        }
+        $this->app->httpResponse()->redirect('/formation/index.html');
     }
 
     public function executeRestore(HTTPRequest $request){
