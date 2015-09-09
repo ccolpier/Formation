@@ -1,0 +1,1 @@
+<h2>Mise à jour des informations</h2>

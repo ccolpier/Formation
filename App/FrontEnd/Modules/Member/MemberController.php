@@ -11,26 +11,43 @@ class MemberController extends \OCFram\BackController{
     public function executeIndex(HTTPRequest $request){
         /** @var $manager \Model\MembersManager*/
         $manager = $this->managers->getManagerOf('Members');
+        $user = $this->app()->user();
 
         //Récupération de l'éventuel id dans l'URL
         $id = $request->getData('id');
-        //Si l'ID du membre est fourni
-        if(is_int($id) && !empty($id)){
-            $member = $manager->getUnique($id);
-            $this->page->addVar('member', $member);
+
+        /** @var $member Member*/
+        $member = NULL;
+
+        //Si le membre essaie de visiter sa page de membre s mais n'est pas connecté, on le redirige
+        if(empty($id) && !$user->isAuthenticated()){
+            $user->setFlash('Vous devez être connecté pour voir votre page de membre.');
+            $this->app()->HTTPResponse()->redirect('/formation/index.html');
         }
-        //Sinon on affiche le membre actuel si l'utilisateur est connecté
+        //Si l'id de la page est la même que celle de la session connectée ou que l'id n'est pas fournie sur connexion => page perso
+        //Si l'id n'est pas fourni mais que le membre est connecté => page perso
+        elseif($user->isAuthenticated() && ($id == $user->getAttribute('connected_id') || empty($id))){
+            $this->page->addVar('mode', 'private');
+            $member = $manager->getUnique($user->getAttribute('connected_id'));
+        }
+        //Sinon affichage privé
         else{
-            $user = $this->app()->user();
-            if($user->isAuthenticated()){
-                $id = $user->getAttribute('name');
-            }
+            $this->page->addVar('mode', 'public');
+            $member = $manager->getUnique($id);
         }
 
         //Page erreur si le membre n'existe pas
         if(empty($member)){
+            $user->setFlash('Le membre n\'a pas pu être trouvé.');
             $this->app->httpResponse()->redirect404();
         }
+        //Page erreur si le membre est invalide
+        if(!$member->isValid()){
+            $user->setFlash('Le membre est invalide ou incomplet.');
+            $this->app->httpResponse()->redirect404();
+        }
+
+        $this->page->addVar('member', $member);
     }
 
     private function connectMember($nickname){
