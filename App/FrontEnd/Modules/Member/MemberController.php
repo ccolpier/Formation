@@ -22,7 +22,7 @@ class MemberController extends \OCFram\BackController{
         //Si le membre essaie de visiter sa page de membre s mais n'est pas connecté, on le redirige
         if(empty($id) && !$user->isAuthenticated()){
             $user->setFlash('Vous devez être connecté pour voir votre page de membre.');
-            $this->app()->HTTPResponse()->redirect('/formation/index.html');
+            $this->app()->HTTPResponse()->redirect('/formation/connect.html');
         }
         //Si l'id de la page est la même que celle de la session connectée ou que l'id n'est pas fournie sur connexion => page perso
         //Si l'id n'est pas fourni mais que le membre est connecté => page perso
@@ -272,7 +272,69 @@ class MemberController extends \OCFram\BackController{
     }
 
     public function executeUpdate(HTTPRequest $request){
+        $user = $this->app->user();
+        //Redirection si non connecté
+        if(!$user->isAuthenticated()){
+            $user->setFlash('Vous devez être connecté pour modifier votre profil.');
+            $this->app()->HTTPResponse()->redirect('/formation/connect.html');
+        }
 
+        /** @var $manager \Model\MembersManager*/
+        $manager = $this->managers->getManagerOf('Members');
+
+        /** @var $member Member*/
+        $member = $manager->getUnique($user->getAttribute('connected_id'));
+        if(empty($member)){
+            $user->setFlash('Erreur pour retrouver les informations.');
+            $this->app()->HTTPResponse()->redirect404();
+        }
+
+        //Informations du formulaire
+        $formBuilder = new \FormBuilder\UpdateProfileFormBuilder($member);
+        $formBuilder->build();
+        $form = $formBuilder->form();
+
+        //Si il n'y a pas de données envoyées ou que le formulaire est invalide
+        if($request->method() == 'POST' && $form->isValid()) {
+            //Message d'erreur
+            $message = '';
+
+            //On vérifie que le nouveau pseudo n'est pas pris
+            $newName = $request->postData('nickname');
+            if(!empty($newName) && $newName != $member->nickname() && $manager->nicknameAlreadyTaken($newName)){
+                $message .= 'Le pseudo est déjà pris.\n';
+            }
+            if(!empty($newName) && strlen($newName) < 5){
+                $message .= 'Le pseudo est trop court.\n';
+            }
+            //On vérifie que le nouveau mot de passe est confirmé
+            $newPassword = $request->postData('password');
+            $newPassword_confirm = $request->postData('password_confirm');
+            if(!empty($newPassword) && $newPassword != $newPassword_confirm){
+                $message .= 'Veuillez confirmer le mot de passe.\n';
+            } if(!empty($newPassword) && strlen($newPassword) < 5){
+                $message .= 'Le mot de passe est trop court.\n';
+            }
+            $newEmail = $request->postData('email');
+
+            //Si tout est bon, on met à jour
+            if(empty($message)){
+                $newMember = clone $member;
+                $newMember->setNickname(empty($newName) ? $member->nickname() : $newName);
+                $newMember->setPassword(empty($newPassword) ? $member->password() : $newPassword);
+                $newMember->setEmail(empty($newEmail) ? $member->email() : $newEmail);
+
+                $manager->modify($newMember);
+
+                $this->app()->HTTPResponse()->redirect('/formation/member.html');
+            }
+            //Sinon on notifie
+            else{
+                $user->setFlash($message);
+            }
+        }
+
+        $this->page->addVar('form', $form->createView());
     }
 
     public function executeSearch(HTTPRequest $request){

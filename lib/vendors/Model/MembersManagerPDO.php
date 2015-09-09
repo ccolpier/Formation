@@ -49,12 +49,13 @@ class MembersManagerPDO extends MembersManager{
         return $listeMembers;
     }
 
-    protected function modify(Member $member){
+    public function modify(Member $member){
         /** @var $prepare \PDOStatement*/
         $prepare = $this->dao->prepare('UPDATE members SET nickname = :nickname, password = :password, email = :email, firstname = :firstname, lastname = :lastname,  dateofbirth = :dateofbirth, photo = :photo, biography = :biography WHERE id = :id');
         $prepare->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
 
-        $prepare->bindValue(':nickname', $member->nickname());
+        $prepare->bindValue(':id', $member->id());
+        $prepare->bindValue(':nickname', $member->nickname(), \PDO::PARAM_INT);
         $prepare->bindValue(':password', $member->password());
         $prepare->bindValue(':email', $member->email());
         $prepare->bindValue(':firstname', $member->firstname());
