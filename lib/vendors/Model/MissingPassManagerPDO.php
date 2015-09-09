@@ -28,7 +28,9 @@ class MissingPassManagerPDO extends MissingPassManager{
         $prepare->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
         $prepare->bindValue(':member', $member->id(), \PDO::PARAM_INT);
         $prepare->bindValue(':code', $this->generate());
-        $prepare->execute();
+        try {
+            $prepare->execute();
+        }catch(\Exception $e){echo $e->getMessage();}
 
         $missingPass = $this->get($member);
         $missingPass->setId($this->dao->lastInsertId());

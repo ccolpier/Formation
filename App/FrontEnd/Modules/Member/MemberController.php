@@ -9,12 +9,13 @@ class MemberController extends \OCFram\BackController{
     /** Affiche la page du membre actuel ou la page d'un membre donné si celui-ci est précisé*/
     // TODO : à finir, l'affichage des informations du membre connecté essentiellement
     public function executeIndex(HTTPRequest $request){
+        /** @var $manager \Model\MembersManager*/
         $manager = $this->managers->getManagerOf('Members');
 
         //Récupération de l'éventuel id dans l'URL
         $id = $request->getData('id');
         //Si l'ID du membre est fourni
-        if(is_int($id)){
+        if(is_int($id) && !empty($id)){
             $member = $manager->getUnique($id);
             $this->page->addVar('member', $member);
         }
@@ -206,20 +207,27 @@ class MemberController extends \OCFram\BackController{
         $form = $formBuilder->form();
 
 
-        //Cas:
+        /** @var $member Member*/
+        $member = $missingPass->member(); //Membre
+
+        //Pas de pseudo fourni
+        if(empty($name) && empty($member)){
+            $user->setFlash('Fournissez un pseudo à récupérer et énventuellement le code de récupération associé si il a été reçu.');
+        }
+
         //Mauvais pseudo fourni => on notifie
-        if(!empty($name)&& empty($missingPass->member())){
+        if(!empty($name)&& empty($member)){
             $user->setFlash('Le pseudo passé en paramètre n\'éxiste pas.');
         }
+
         //Pseudo fourni correct
-        if(!empty($missingPass->member())){
-            /** @var $member Member*/
-            $member = $missingPass->member(); //Membre
+        if(!empty($member) && $member->isValid()){
             /** @var $existingMissing \Entity\MissingPass*/
             $existingMissing = $missingManager->get($member); //Missing pré éxistant
             //Pas de missing existant => on en crée un
             if(empty($existingMissing)){
                 $missingManager->add($member);
+                $user->setFlash('Un code vous a été envoyé par mail. Remplissez ce formulaire avec le code');
                 //TODO : envoi email
             }
             //Missing existant => on vérifie si le code a été fourni
@@ -237,7 +245,7 @@ class MemberController extends \OCFram\BackController{
                     }
                     //Sinon on notifie
                     else{
-                        $user->setFlash('Le code foutni n\'est pas celui envoyé. Vérifiez vos derniers mails.');
+                        $user->setFlash('Le code fourni n\'est pas celui envoyé. Vérifiez vos derniers mails.');
                     }
                 }
             }
