@@ -3,6 +3,7 @@ namespace OCFram;
 
 class HTTPResponse extends ApplicationComponent
 {
+    /** @var $page Page */
     protected $page;
 
     public function addHeader($header)

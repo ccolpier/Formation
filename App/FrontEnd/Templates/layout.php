@@ -26,8 +26,10 @@
                 <li><a href="/formation/logout.html">Se déconnecter</a></li>
             <?php } else {?>
                 <li><a href="/formation/register.html">Inscription</a></li>
-                <li><a href="/formation/connection.html">Connexion</a></li>
+                <li><a href="/formation/connect.html">Connexion</a></li>
             <?php }?>
+            <li><a href="/formation/news.html">Voir les News</a></li>
+            <li><a href="/formation/search.html">Rechercher un membre</a></li>
         </ul>
     </nav>
 

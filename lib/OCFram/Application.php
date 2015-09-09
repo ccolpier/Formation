@@ -48,7 +48,6 @@ abstract class Application {
         }
         catch (\RuntimeException $e)
         {
-            echo $e->getMessage();
             if ($e->getCode() == Router::NO_ROUTE)
             {
                 // Si aucune route ne correspond, c'est que la page demandée n'existe pas.

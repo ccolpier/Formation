@@ -32,10 +32,6 @@ $formBuilderLoader->register();
 $othersLoader = new SplClassLoader('Others', __DIR__.'/../lib/vendors');
 $othersLoader->register();
 
-$formHandlerLoader = new SplClassLoader('FormHandler', __DIR__.'/../lib/vendors');
-$formHandlerLoader->register();
-
-
 // Il ne nous suffit plus qu'à déduire le nom de la classe et de l'instancier
 $appClass = 'App\\'.$_GET['app'].'\\'.$_GET['app'].'Application';
 

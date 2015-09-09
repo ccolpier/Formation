@@ -11,6 +11,7 @@ class RegisterFormBuilder extends \OCFram\FormBuilder
             'maxLength' => 20,
             'validators' => [
                 new \Validator\MaxLengthValidator('Le pseudo spécifié est trop long (20 caractères maximum)', 20),
+                new \Validator\MinLengthValidator('Le pseudo spécifié est trop court (5 caractères minimum', 5),
                 new \Validator\NotNullValidator('Merci de spécifier le pseudo'),
             ],
         ]))
@@ -19,10 +20,20 @@ class RegisterFormBuilder extends \OCFram\FormBuilder
             'name' => 'password',
             'maxLength' => 20,
             'validators' => [
-                new \Validator\MaxLengthValidator('Le mot de passe spécifié est trop long (20 caractères maximum)', 50),
+                new \Validator\MaxLengthValidator('Le mot de passe spécifié est trop long (20 caractères maximum)', 20),
                 new \Validator\MinLengthValidator('Le mot de passe spécifié est trop court (5 caractères minimum', 5),
                 new \Validator\NotNullValidator('Merci de spécifier le mot de passe'),
             ],
+            ]))
+            ->add(new \Field\StringField([
+                'label' => 'E-mail',
+                'name' => 'email',
+                'maxLength' => 50,
+                'validators' => [
+                    new \Validator\MaxLengthValidator('L\'adresse email spécifiée est trop longue (50 caractères maximum)', 50),
+                    new \Validator\NotNullValidator('Merci de spécifier votre adresse email'),
+                    new \Validator\IsEmailValidator('Veuillez renseigner une adresse email valide.'),
+                ],
             ]))
             ->add(new \Field\StringField([
                 'label' => 'Prénom',

@@ -9,6 +9,7 @@ class CommentsManagerPDO extends CommentsManager
     {
         $q = $this->dao->prepare('INSERT INTO comments(news, auteur, contenu, date) VALUES (:news, :auteur, :contenu, GETUTCDATE())');
 
+        $q->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
         $q->bindValue(':news', $comment->news(), \PDO::PARAM_INT);
         $q->bindValue(':auteur', $comment->auteur());
         $q->bindValue(':contenu', $comment->contenu());
@@ -31,6 +32,7 @@ class CommentsManagerPDO extends CommentsManager
         $q->execute();
 
         $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+        $q->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
 
         $comments = $q->fetchAll();
 
@@ -46,6 +48,7 @@ class CommentsManagerPDO extends CommentsManager
     {
         $q = $this->dao->prepare('UPDATE comments SET auteur = :auteur, contenu = :contenu WHERE id = :id');
 
+        $q->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
         $q->bindValue(':auteur', $comment->auteur());
         $q->bindValue(':contenu', $comment->contenu());
         $q->bindValue(':id', $comment->id(), \PDO::PARAM_INT);
@@ -60,6 +63,7 @@ class CommentsManagerPDO extends CommentsManager
         $q->execute();
 
         $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+        $q->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
 
         return $q->fetch();
     }

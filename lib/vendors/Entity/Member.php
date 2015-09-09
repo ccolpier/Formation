@@ -7,6 +7,7 @@ use \Others\DateTimeFram;
 class Member extends \OCFram\Entity {
     protected $nickname,
         $password,
+        $email,
         $firstname,
         $lastname,
         $dateofbirth,
@@ -17,13 +18,14 @@ class Member extends \OCFram\Entity {
     //Codes d'erreurs
     const NICKNAME_INVALID = 1;
     const PASSWORD_INVALID = 2;
-    const FIRSTNAME_INVALID = 3;
-    const LASTNAME_INVALID = 4;
-    const PHOTO_INVALID = 5;
-    const BIOGRAPHY_INVALID = 6;
+    const EMAIL_INVALID = 3;
+    const FIRSTNAME_INVALID = 4;
+    const LASTNAME_INVALID = 5;
+    const PHOTO_INVALID = 6;
+    const BIOGRAPHY_INVALID = 7;
 
     public function isValid(){
-        return !(empty($this->nickname) || empty($this->firstname) || empty($this->lastname) || empty($this->dateofbirth) || empty($this->dateofregister));
+        return !(empty($this->nickname) || empty($this->firstname) || empty($this->lastname) || empty($this->email) || empty($this->dateofbirth) || empty($this->dateofregister));
     }
 
     public function setNickname($nickname){
@@ -41,6 +43,15 @@ class Member extends \OCFram\Entity {
         }
         else {
             $this->erreurs[] = self::PASSWORD_INVALID;
+        }
+    }
+
+    public function setEmail($email){
+        if(is_string($email) && !empty($email)){
+            $this->email = $email;
+        }
+        else {
+            $this->erreurs[] = self::EMAIL_INVALID;
         }
     }
 
@@ -94,6 +105,10 @@ class Member extends \OCFram\Entity {
 
     public function password() {
         return $this->password;
+    }
+
+    public function  email(){
+        return $this->email;
     }
 
     public function firstname(){

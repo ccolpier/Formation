@@ -10,17 +10,20 @@ class NewsManagerPDO extends NewsManager{
     {
         $query = 'INSERT INTO news (auteur, titre, contenu, dateAjout, dateModif) VALUES (:auteur, :titre, :contenu, GETUTCDATE(), GETUTCDATE())';
         $requete = $this->dao->prepare($query);
+        $requete->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
         $requete->bindValue(':titre', $news->titre());
         $requete->bindValue(':auteur', $news->auteur());
         $requete->bindValue(':contenu', $news->contenu());
 
         $requete->execute();
+        $news->setId($this->dao->lastInsertId());
     }
 
     protected function modify(News $news)
     {
         $requete = $this->dao->prepare('UPDATE news SET auteur = :auteur, titre = :titre, contenu = :contenu, dateModif = NOW() WHERE id = :id');
 
+        $requete->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
         $requete->bindValue(':titre', $news->titre());
         $requete->bindValue(':auteur', $news->auteur());
         $requete->bindValue(':contenu', $news->contenu());
@@ -35,6 +38,7 @@ class NewsManagerPDO extends NewsManager{
         // Solution. Deuxième ligne nécessaire pour bind les résultats de la requête dans un type d'objets PHP
         $requete = $this->dao->query($query);
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\News');
+        $requete->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
 
         $listeNews = $requete->fetchAll();
 
@@ -54,6 +58,7 @@ class NewsManagerPDO extends NewsManager{
         $query = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news WHERE id = '.(int)$id;
         $requete = $this->dao->query($query);
         $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\News');
+        $requete->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
 
         //Solution
         /** @var $news News*/
@@ -69,6 +74,7 @@ class NewsManagerPDO extends NewsManager{
     public function count(){
         $query = 'SELECT COUNT(id) FROM news';
         $result = $this->dao->query($query);
+        $result->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
         return $result->fetchColumn(0); // Renvoie le résultat de la premire colonne de la première ligne => càd le count
     }
 

@@ -20,7 +20,7 @@ class Managers{
             return $this->managers[$module];
         }
         else {
-            return NULL;
+            return $this->managers[$module];
         }
     }
 }
