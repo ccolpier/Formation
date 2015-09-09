@@ -71,7 +71,7 @@ class MemberController extends \OCFram\BackController{
 
         /** @var $form \OCFram\Form*/
         $form = $formBuilder->form();
-        $form->initValues();
+        //$form->initValues();
 
         /** @var $manager \Model\MembersManager*/
         $manager = $this->managers->getManagerOf('Members');
@@ -127,7 +127,7 @@ class MemberController extends \OCFram\BackController{
 
         /** @var $form \OCFram\Form*/
         $form = $formBuilder->form();
-        $form->initValues();
+        //$form->initValues();
 
         /** @var $manager \Model\MembersManager*/
         $manager = $this->managers->getManagerOf('Members');
@@ -178,8 +178,12 @@ class MemberController extends \OCFram\BackController{
             $this->app->httpResponse()->redirect('/formation/member.html');
         }
 
+        /** @var $memberManager \Model\MembersManager*/
+        $memberManager = $this->managers->getManagerOf('Members');
+        /** @var $missingManager \Model\MissingPassManager*/
+        $missingManager = $this->managers->getManagerOf('MissingPass');
         /** @var $nickname string*/
-        $nickname = NULL;
+        $name = NULL;
         /** @var $code string*/
         $code = NULL;
 
@@ -190,36 +194,55 @@ class MemberController extends \OCFram\BackController{
             $code = $request->postData('code');
         }
 
-        $formBuilder = new \FormBuilder\ConnectFormBuilder($member);
+        $missingPass = new \Entity\MissingPass([
+            'member' => !empty($memberManager->getUniqueByName($name)) ? $memberManager->getUniqueByName($name) : new Member(),
+            'code' => $code,
+        ]);
+
+        $formBuilder = new \FormBuilder\RestoreFormBuilder($missingPass);
         $formBuilder->build();
 
         /** @var $form \OCFram\Form*/
         $form = $formBuilder->form();
-        $form->initValues();
 
-        /** @var $manager \Model\MembersManager*/
-        $manager = $this->managers->getManagerOf('Members');
 
-        //On vérifie que le combo mot de passe et nom correspond à la base
-        /** @var $found_member Member*/
-        $found_member = $manager->getUniqueByName($login_name);
-
-        // Bon cas: on connecte
-        if(!empty($found_member)) {
-            if( $found_member->nickname() == $login_name && $found_member->password() == $login_password && $request->method() == 'POST' && $form->isValid()){
-                $this->connectMember($login_name);
-                $user->setFlash('Vous avez été connecté.');
-                $this->app->httpResponse()->redirect('/formation/member.html');
+        //Cas:
+        //Mauvais pseudo fourni => on notifie
+        if(!empty($name)&& empty($missingPass->member())){
+            $user->setFlash('Le pseudo passé en paramètre n\'éxiste pas.');
+        }
+        //Pseudo fourni correct
+        if(!empty($missingPass->member())){
+            /** @var $member Member*/
+            $member = $missingPass->member(); //Membre
+            /** @var $existingMissing \Entity\MissingPass*/
+            $existingMissing = $missingManager->get($member); //Missing pré éxistant
+            //Pas de missing existant => on en crée un
+            if(empty($existingMissing)){
+                $missingManager->add($member);
+                //TODO : envoi email
             }
-            //Sinon on reboucle avec alertes
-            if($found_member->nickname() != $login_name || $found_member->password() != $login_password){
-                $user->setFlash('Combinaison pseudo/mot de passe incorrecte. Veulliez réessayer.');
+            //Missing existant => on vérifie si le code a été fourni
+            else{
+                //Si code non fourni => on notifie
+                if(empty($code)){
+                    $user->setFlash('Fournissez le code qui a été envoyé par mail');
+                }
+                //Si code est fourni on vérifie si il est correct
+                else{
+                    //Si code correct, on affiche le mot de passe du membre et on delete le missing
+                    if($code == $existingMissing->code()){
+                        $missingManager->delete($member);
+                        $user->setFlash('Votre mot de passe a été récupéré. Le voilà: '.$member->password());
+                    }
+                    //Sinon on notifie
+                    else{
+                        $user->setFlash('Le code foutni n\'est pas celui envoyé. Vérifiez vos derniers mails.');
+                    }
+                }
             }
         }
-        elseif(!empty($login_name) || !empty($login_password)){
-            $user->setFlash('Combinaison pseudo/mot de passe incorrecte. Veulliez réessayer.');
-        }
-        // Si on a pas validé, on recharge la page mais avec les anciennes valeurs du formulaire
+
         $this->page->addVar('form', $form->createView());
     }
 

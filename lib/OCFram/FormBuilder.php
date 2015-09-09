@@ -3,6 +3,7 @@ namespace OCFram;
 
 abstract class FormBuilder
 {
+    /** @var Form */
     protected $form;
 
     public function __construct(Entity $entity)

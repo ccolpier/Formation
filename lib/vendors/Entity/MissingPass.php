@@ -6,6 +6,9 @@ use \Entity\Member;
 
 class MissingPass extends Entity
 {
+    /**
+     * @var $member Member
+     */
     protected $member,
         $code;
 
@@ -37,6 +40,10 @@ class MissingPass extends Entity
 
     public function id(){
         return $this->id;
+    }
+
+    public function name(){
+        return $this->member()->nickname();
     }
 
     public function member()

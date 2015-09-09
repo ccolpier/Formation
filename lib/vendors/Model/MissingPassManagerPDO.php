@@ -4,7 +4,7 @@ namespace Model;
 use \Entity\MissingPass;
 use \Entity\Member;
 
-abstract class MissingPassManagerPDO extends MissingPassManager{
+class MissingPassManagerPDO extends MissingPassManager{
     public function save(MissingPass $missingPass)
     {
         if ($missingPass->isValid())
@@ -43,7 +43,14 @@ abstract class MissingPassManagerPDO extends MissingPassManager{
         $prepare->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\MissingPass');
         $prepare->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
 
-        return $prepare->fetch();
+        /** @var $missing MissingPass*/
+        if ($missing = $prepare->fetch())
+        {
+            $manager = new MembersManagerPDO($this->dao);
+            $missing->setMember($manager->getUnique($missing->member()));
+        }
+
+        return $missing;
     }
 
     public function refresh(Member $member){
