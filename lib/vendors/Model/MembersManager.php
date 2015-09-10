@@ -21,6 +21,8 @@ abstract class MembersManager extends \OCFram\Manager{
 
     abstract public function getList($debut = -1, $limite = -1);
 
+    abstract public function getListByName($nickname);
+
     abstract public function modify(Member $member);
 
     abstract public function getIdByName($nickname);

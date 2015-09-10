@@ -35,7 +35,26 @@ class MembersManagerPDO extends MembersManager{
 
         /** @var $requete \PDOStatement*/
         $requete = $this->dao->query($query);
-        $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Members');
+        $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Member');
+        $requete->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
+        $listeMembers = $requete->fetchAll();
+
+        /** @var $member Member*/
+        foreach ($listeMembers as $member)
+        {
+            $member->setDateofbirth(new DateTimeFram($member->dateofbirth(), new \DateTimeZone("UTC")));
+            $member->setDateofregister(new DateTimeFram($member->dateofregister(), new \DateTimeZone("UTC")));
+        }
+
+        return $listeMembers;
+    }
+
+    public function getListByName($nickname){
+        $query = 'SELECT id, nickname, password, email, firstname, lastname, dateofbirth, dateofregister, photo, biography FROM members WHERE nickname LIKE \'%'.$nickname.'%\'';
+
+        /** @var $requete \PDOStatement*/
+        $requete = $this->dao->query($query);
+        $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Member');
         $requete->setAttribute(\PDO::SQLSRV_ATTR_ENCODING, \PDO::SQLSRV_ENCODING_SYSTEM);
         $listeMembers = $requete->fetchAll();
 

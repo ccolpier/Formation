@@ -338,6 +338,28 @@ class MemberController extends \OCFram\BackController{
     }
 
     public function executeSearch(HTTPRequest $request){
+        $user = $this->app->user();
+        /** @var $manager \Model\MembersManager*/
+        $manager = $this->managers->getManagerOf('Members');
 
+        //Si données reçues
+        if($request->method() == 'POST'){
+            $member = new Member([
+                'nickname' => $request->postData('nickname'),
+            ]);
+            $listeMembres = $manager->getListByName($member->nickname());
+        }
+        else {
+            $member = new Member();
+            $listeMembres = NULL;
+        }
+        $this->page->addVar('listeMembres', $listeMembres);
+
+        //Informations du formulaire
+        $formBuilder = new \FormBuilder\SearchMemberFormBuilder($member);
+        $formBuilder->build();
+        $form = $formBuilder->form();
+
+        $this->page->addVar('form', $form->createView());
     }
 }
