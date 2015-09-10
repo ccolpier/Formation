@@ -3,8 +3,14 @@
 namespace OCFram;
 
 class Page extends ApplicationComponent{
+    protected $layoutFile;
     protected $contentFile;
     protected $vars = array();
+
+    public function __construct(Application $app){
+        parent::__construct($app);
+        $this->setLayoutFile( __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php');
+    }
 
     public function addVar($var, $value){
         if(is_string($var)){
@@ -24,15 +30,23 @@ class Page extends ApplicationComponent{
             require $this->contentFile;
             $content = ob_get_clean();
 
-            ob_start();
-            require __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php';
-            return ob_get_clean();
+            if(!empty($this->layoutFile)) {
+                ob_start();
+                require $this->layoutFile;
+                return ob_get_clean();
+            }
         }
     }
 
     public function setContentFile($contentFile){
         if(is_string($contentFile)){
             $this->contentFile = $contentFile;
+        }
+    }
+
+    public function setLayoutFIle($layoutFile){
+        if(is_string($layoutFile)){
+            $this->layoutFile = $layoutFile;
         }
     }
 }

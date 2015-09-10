@@ -8,6 +8,8 @@
     <meta charset="utf-8" />
 
     <link rel="stylesheet" href="/formation/css/Envision.css" type="text/css" />
+    <script src="scripts/formValidate.js"></script>
+    <script src="scripts/jquery-2.1.4.js"></script>
 </head>
 
 <body>

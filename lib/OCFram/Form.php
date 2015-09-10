@@ -37,6 +37,7 @@ class Form
             $view .= $field->buildWidget().'<br />';
         }
 
+        $view .= '<p id="validationMessage"/></p>';
         return $view;
     }
 
@@ -45,6 +46,7 @@ class Form
         $valid = true;
 
         // On vérifie que tous les champs sont valides.
+        /** @var $field Field*/
         foreach ($this->fields as $field)
         {
             if (!$field->isValid())
@@ -87,5 +89,42 @@ class Form
                 } catch(\Exception $e) {}
             }
         }
+    }
+
+    public function ajaxFunctionName(){
+        return 'formValidate()';
+    }
+
+    public function generateAjaxValidation(){
+        $script = 'function '.$this->ajaxFunctionName().' {
+        ';
+        $script .= '$.ajax({
+            method:"POST",
+            url:"/formation/formvalidation.html",
+            data:{';
+        /** @var $field Field*/
+        foreach ($this->fields as $field)
+        {
+            $script .= '"'.$field->name().'":document.getElementById("form" + "'.$field->name().'").value,';
+        }
+        $script .= '},
+            success: function(response) {
+                $("#validationMessage").empty();
+                data = $.trim(response);
+                if(data.length > 0){
+                    node = document.createElement("P");
+                    textnode = document.createTextNode(data);
+                    node.appendChild(textnode);
+                    document.getElementById("validationMessage").appendChild(node);
+                }
+                else {
+                    $("#mainForm").removeAttr("onsubmit");
+                    $("#mainForm").submit();
+                }
+            }
+        })
+        ';
+        $script .= ' }';
+        return $script;
     }
 }

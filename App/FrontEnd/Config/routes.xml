@@ -15,4 +15,6 @@
     <route url="/formation/update-profile\.html" module="Member" action="update" />
     <route url="/formation/search\.html" module="Member" action="search" />
     <route url="/formation/search-result\.html" module="Member" action="search" vars="name"/>
+
+    <route url="/formation/formvalidation\.html" module="FormValidation" action="validate" />
 </routes>

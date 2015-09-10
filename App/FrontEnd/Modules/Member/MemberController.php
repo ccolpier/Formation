@@ -111,7 +111,7 @@ class MemberController extends \OCFram\BackController{
             $this->app->user()->setFlash('Ce pseudo est déjà pris !');
         }
         // Si on a pas validé, on recharge la page mais avec les anciennes valeurs du formulaire
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('form', $form);
     }
 
     /** Affiche le formulaire de connexion ou finalise la connexion */
@@ -170,7 +170,7 @@ class MemberController extends \OCFram\BackController{
             $user->setFlash('Combinaison pseudo/mot de passe incorrecte. Veulliez réessayer.');
         }
         // Si on a pas validé, on recharge la page mais avec les anciennes valeurs du formulaire
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('form', $form);
     }
 
     // Déconnecte le membre si il était connecté
@@ -268,7 +268,7 @@ class MemberController extends \OCFram\BackController{
             }
         }
 
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('form', $form);
     }
 
     public function executeUpdate(HTTPRequest $request){
@@ -334,7 +334,7 @@ class MemberController extends \OCFram\BackController{
             }
         }
 
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('form', $form);
     }
 
     public function executeSearch(HTTPRequest $request){
@@ -360,6 +360,6 @@ class MemberController extends \OCFram\BackController{
         $formBuilder->build();
         $form = $formBuilder->form();
 
-        $this->page->addVar('form', $form->createView());
+        $this->page->addVar('form', $form);
     }
 }
